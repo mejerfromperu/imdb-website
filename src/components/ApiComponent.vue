@@ -21,10 +21,8 @@ const fetchData = async () => {
     const response = await axios.get(
       `https://localhost:7135/api/imdbRest/names/search?query=${searchQuery.value}`
     );
-    console.log("Response:", response.data);
-    console.log("Is response.data an array?", Array.isArray(response.data));
+
     data.value = response.data.items || [];
-    console.log("data.value after assignment:", data.value);
   } catch (err) {
     console.error("Error fetching data:", err);
     error.value = err.message || "Failed to fetch data";
@@ -43,7 +41,7 @@ const handleKeyPress = (event) => {
 
 <template>
   <div class="mountain-container">
-    <h1 class="title">Peak Explorer</h1>
+    <h1 class="title">Search for actors</h1>
 
     <!-- Search Bar -->
     <div class="search-bar">
@@ -53,7 +51,7 @@ const handleKeyPress = (event) => {
         placeholder="Seek a name (e.g., Tom Hanks)"
         @keypress="handleKeyPress"
       />
-      <button @click="fetchData">Ascend</button>
+      <button @click="fetchData">FIRE</button>
     </div>
 
     <!-- Error Message -->
@@ -62,7 +60,7 @@ const handleKeyPress = (event) => {
     <!-- Loading Spinner -->
     <div v-if="isLoading" class="loading">
       <div class="spinner"></div>
-      <p>Climbing the peaks...</p>
+      <p>LOADING!...</p>
     </div>
 
     <!-- Results -->

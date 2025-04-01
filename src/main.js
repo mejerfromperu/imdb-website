@@ -1,23 +1,8 @@
 import { createApp } from 'vue';
-import './style.css';
 import App from './App.vue';
-import { createRouter, createWebHistory } from 'vue-router';
-import ApiComponent from './components/ApiComponent.vue';
-import HelloWorld from './components/HelloWorld.vue';
+import router from './router'; // Ensure you import the router if you're using Vue Router
 
-// Define routes
-const routes = [
-  { path: '/', component: HelloWorld }, // Home page (App.vue with custom content)
-  { path: '/search', component: ApiComponent }, // Search page
-];
-
-// Create router instance
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
-
-// Create and mount the app with router
 const app = createApp(App);
-app.use(router);
+
+app.use(router); // Ensure Vue Router is registered
 app.mount('#app');

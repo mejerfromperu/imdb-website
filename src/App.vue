@@ -1,8 +1,8 @@
 <script setup>
 // No need to import ApiComponent here; the router will handle it
-import { useRoute } from 'vue-router'; // To check the current route
-
-const route = useRoute(); // Access the current route
+// REMOVE THIS ↓
+import { useRoute } from 'vue-router'; 
+// const route = useRoute(); // Also remove this
 </script>
 
 <template>
@@ -10,23 +10,23 @@ const route = useRoute(); // Access the current route
     <nav class="mountain-nav">
       <div class="logo">Winter Peaks</div>
       <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/search">Name Search</router-link></li>
+        <li><router-link to="/" active-class="active-link">Home</router-link></li>
+        <li><router-link to="/search-name" active-class="active-link">Search Name</router-link></li>
+        <li><router-link to="/search-title" active-class="active-link">Search Title</router-link></li>
+        <li><router-link to="/add-name" active-class="active-link">Add Name</router-link></li>
+        <li><router-link to="/add-title" active-class="active-link">Add Title</router-link></li>
+        <li><router-link to="/update-title" active-class="active-link">Update Title</router-link></li>
+        <li><router-link to="/delete-title" active-class="active-link">Delete Title</router-link></li>
+
       </ul>
     </nav>
 
-    <!-- Home content when on '/' -->
-    <div v-if="route.path === '/'" class="home-container">
-      <div class="welcome">
-        <h1>Welcome to the Winter Peaks</h1>
-        <p>Explore the icy heights and uncover legends in the snow.</p>
-      </div>
+    <div class="content">
+      <router-view></router-view>
     </div>
-
-    <!-- Router view for other routes like '/search' -->
-    <router-view v-else></router-view>
   </div>
 </template>
+
 
 <style scoped>
 .app-container {
@@ -44,8 +44,9 @@ const route = useRoute(); // Access the current route
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  z-index: 10;
+  z-index: 1000; /* Increase this value */
 }
+
 
 .mountain-nav .logo {
   font-size: 1.8rem;
