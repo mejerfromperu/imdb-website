@@ -13,7 +13,6 @@ const route = useRoute(); // Keep this if you plan to use route-based logic late
         <li><router-link to="/search-title" active-class="active-link">Search Films</router-link></li>
         <li><router-link to="/add-name" active-class="active-link">Add Actor</router-link></li>
         <li><router-link to="/add-title" active-class="active-link">Add Film</router-link></li>
-        <li><router-link to="/update-title" active-class="active-link">Update Film</router-link></li>
         <li><router-link to="/delete-title" active-class="active-link">Delete Film</router-link></li>
       </ul>
     </nav>
@@ -27,7 +26,7 @@ const route = useRoute(); // Keep this if you plan to use route-based logic late
 <style scoped>
 .app-container {
   min-height: 100vh;
-  background: none; /* Let index.html background show through */
+  background: none;
 }
 
 .movie-nav {
@@ -35,7 +34,7 @@ const route = useRoute(); // Keep this if you plan to use route-based logic late
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(66, 87, 78, 0.85); /* Deep green, slightly less transparent than components */
+  background: rgba(66, 87, 78, 0.85); 
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
@@ -48,7 +47,7 @@ const route = useRoute(); // Keep this if you plan to use route-based logic late
 .movie-nav .logo {
   font-size: 2rem;
   font-weight: 700;
-  color: #e8f0e9; /* Light grey-green */
+  color: #e8f0e9; 
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -70,19 +69,17 @@ const route = useRoute(); // Keep this if you plan to use route-based logic late
 
 .movie-nav ul li a:hover,
 .movie-nav ul li a.router-link-active {
-  background: #8ab89a; /* Muted green */
-  border: 2px solid #6e947e; /* Darker green border */
+  background: #8ab89a; 
+  border: 2px solid #6e947e; 
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .content {
-  padding: 100px 20px 20px; /* Extra padding to account for fixed nav */
+  padding: 100px 20px 20px; 
 }
 
-/* Removed .home-container and .welcome styles since they’re in Home.vue */
 
-/* Responsive */
 @media (max-width: 600px) {
   .movie-nav {
     flex-direction: column;
