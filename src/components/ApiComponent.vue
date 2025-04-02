@@ -21,7 +21,6 @@ const fetchData = async () => {
     const response = await axios.get(
       `https://localhost:7135/api/imdbRest/names/search?query=${searchQuery.value}`
     );
-
     data.value = response.data.items || [];
   } catch (err) {
     console.error("Error fetching data:", err);
@@ -40,8 +39,8 @@ const handleKeyPress = (event) => {
 </script>
 
 <template>
-  <div class="mountain-container">
-    <h1 class="title">Search for actors</h1>
+  <div class="search-container">
+    <h1 class="title">Search for famous Actors</h1>
 
     <!-- Search Bar -->
     <div class="search-bar">
@@ -51,7 +50,7 @@ const handleKeyPress = (event) => {
         placeholder="Seek a name (e.g., Tom Hanks)"
         @keypress="handleKeyPress"
       />
-      <button @click="fetchData">FIRE</button>
+      <button @click="fetchData">Search</button>
     </div>
 
     <!-- Error Message -->
@@ -60,7 +59,7 @@ const handleKeyPress = (event) => {
     <!-- Loading Spinner -->
     <div v-if="isLoading" class="loading">
       <div class="spinner"></div>
-      <p>LOADING!...</p>
+      <p>Loading...</p>
     </div>
 
     <!-- Results -->
@@ -78,38 +77,38 @@ const handleKeyPress = (event) => {
 
     <!-- No Results -->
     <p v-else-if="data && data.length === 0" class="no-results">
-      No legends found for "{{ searchQuery }}" in the peaks.
+      No actors found for "{{ searchQuery }}".
     </p>
   </div>
 </template>
 
 <style scoped>
-/* Winter Mountain Theme */
-.mountain-container {
+.search-container {
   max-width: 900px;
-  margin: 80px auto 20px; /* Offset for navbar */
-  padding: 40px 20px;
-  background: rgba(236, 240, 241, 0.9); /* Frosted white */
-  border: 4px solid #34495e; /* Dark slate */
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  position: sticky; /* Make the container sticky */
-  top: 20px; /* Adjust as needed to determine the distance from the top */
+  margin: 80px auto 20px;
+  padding: 40px;
+  background: rgba(66, 87, 78, 0.5); /* Slightly less transparent green */
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   font-family: 'Raleway', sans-serif;
-  color: #2c3e50; /* Dark mountain blue */
-  max-height: 80vh; /* Restrict container height to 80% of viewport height */
-  overflow-y: auto; /* Add vertical scrollbar when content overflows */
+  color: #e8f0e9; /* Light grey-green for text */
+  max-height: 80vh;
+  overflow-y: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
+.search-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
 
 /* Title */
 .title {
   text-align: center;
   font-size: 2.8rem;
   font-weight: 700;
-  color: #34495e;
-  text-shadow: 0 0 10px rgba(149, 165, 166, 0.7);
+  color: #e8f0e9;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   margin-bottom: 30px;
 }
 
@@ -127,38 +126,39 @@ const handleKeyPress = (event) => {
   max-width: 500px;
   padding: 15px 25px;
   font-size: 1.2rem;
-  border: 3px solid #95a5a6; /* Cool gray */
+  border: 2px solid #6e947e;
   border-radius: 10px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-bar input:focus {
-  border-color: #3498db; /* Icy blue */
-  box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+  border-color: #8ab89a;
+  box-shadow: 0 0 15px rgba(138, 184, 154, 0.5);
 }
 
 .search-bar button {
   padding: 15px 30px;
   font-size: 1.2rem;
-  background: linear-gradient(45deg, #34495e, #3498db); /* Slate to blue */
-  color: #e6eef5;
-  border: none;
+  background: #8ab89a; /* Muted green */
+  color: #ffffff;
+  border: 2px solid #6e947e;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .search-bar button:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background: #6e947e; /* Darker green */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Error Message */
 .error {
   text-align: center;
-  color: #e74c3c; /* Red for visibility */
+  color: #e74c3c;
   font-size: 1.3rem;
   font-weight: 600;
   padding: 15px;
@@ -173,15 +173,15 @@ const handleKeyPress = (event) => {
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  color: #34495e;
+  color: #e8f0e9;
   font-size: 1.3rem;
 }
 
 .spinner {
   width: 50px;
   height: 50px;
-  border: 5px solid #95a5a6;
-  border-top: 5px solid #3498db;
+  border: 5px solid #b7c9bf;
+  border-top: 5px solid #8ab89a;
   border-radius: 50%;
   animation: spin 1s ease-in-out infinite;
 }
@@ -199,9 +199,9 @@ const handleKeyPress = (event) => {
 }
 
 .card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
   padding: 20px;
-  border: 2px solid #34495e;
+  border: 2px solid #6e947e;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
@@ -226,7 +226,7 @@ const handleKeyPress = (event) => {
 .no-results {
   text-align: center;
   font-size: 1.3rem;
-  color: #34495e;
+  color: #e8f0e9;
   font-style: italic;
   padding: 20px;
   background: rgba(255, 255, 255, 0.7);
@@ -235,7 +235,7 @@ const handleKeyPress = (event) => {
 
 /* Responsive */
 @media (max-width: 600px) {
-  .mountain-container {
+  .search-container {
     margin: 60px auto 10px;
     padding: 20px;
   }
