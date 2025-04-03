@@ -23,13 +23,13 @@ const submitName = async () => {
 
     // super trist construct af dataen jeg sender, næste gang FIND ET ALTERNATIV 
 
-    const newName = {
+    const nameData = {
       nconst: newName.value.nconst.trim(),
 
       primaryName: newName.value.primaryName.trim(),
 
-      birthYear: newName.value.birthYear !== null ? Number(newTitle.value.birthYear) : 0,
-      deathYear: newName.value.deathYear !== null ? Number(newTitle.value.deathYear) : 0,
+      birthYear: newName.value.birthYear !== null ? Number(newName.value.birthYear) : 0,
+      deathYear: newName.value.deathYear !== null ? Number(newName.value.deathYear) : 0,
 
       primaryProfession: newName.value.primaryProfession?.trim() || "string",
     
@@ -51,7 +51,7 @@ const submitName = async () => {
       primaryName: "",
       birthYear: null,
       deathYear: null,
-      primaryProfession: false,
+      primaryProfession: "",
     };
   } catch (err) {
     console.error("error in response:", err.response?.data);
