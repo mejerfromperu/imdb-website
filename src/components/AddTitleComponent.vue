@@ -65,7 +65,7 @@ const submitTitle = async () => {
     );
 
     successMessage.value = "Title added successfully!";
-    console.log("Title added:", response.data);
+    console.log("Title added:", response.data); 
 
     newTitle.value = {
       tconst: "",
@@ -97,13 +97,55 @@ const submitTitle = async () => {
       <input v-model="newTitle.primaryTitle" type="text" placeholder="Primary Title" required />
       <input v-model="newTitle.originalTitle" type="text" placeholder="Original Title (Optional)" />
       <input v-model="newTitle.titleType" type="number" placeholder="Title Type (Optional, e.g., 0 for movie)" />
+      <select v-model="newTitle.titleType">
+      <option disabled value="">Select Title Type</option>
+      <option value="1">short</option>
+      <option value="2">movie</option>
+      <option value="3">tvShort</option>
+      <option value="4">tvMovie</option>
+      <option value="5">tvEpisode</option>
+      <option value="6">tvSeries</option>
+      <option value="7">tvMiniSeries</option>
+      <option value="8">tvSpecial</option>
+      <option value="9">video</option>
+      <option value="10">videoGame</option>
+      <option value="12">tvPilot</option>
+      </select>
       <input v-model="newTitle.startYear" type="number" placeholder="Start Year (Optional)" />
       <input v-model="newTitle.endYear" type="number" placeholder="End Year (Optional)" />
       <input v-model="newTitle.runtimeMinutes" type="number" placeholder="Runtime in Minutes (Optional)" />
       <input v-model="newTitle.genres" type="text" placeholder="Genres (comma-separated IDs, e.g., 1,2, optional)" />
+      <select v-model="newTitle.genres" >
+      <option value="1">Documentary</option>
+      <option value="3">Animation</option>
+      <option value="4">Comedy</option>
+      <option value="6">Sport</option>
+      <option value="7">News</option>
+      <option value="8">Drama</option>
+      <option value="9">Fantasy</option>
+      <option value="10">Horror</option>
+      <option value="11">Biography</option>
+      <option value="12">Music</option>
+      <option value="13">Short</option>
+      <option value="14">Crime</option>
+      <option value="15">Western</option>
+      <option value="16">Family</option>
+      <option value="17">Adventure</option>
+      <option value="18">Action</option>
+      <option value="19">History</option>
+      <option value="20">Mystery</option>
+      <option value="21">Sci-Fi</option>
+      <option value="22">Musical</option>
+      <option value="23">Thriller</option>
+      <option value="24">Film-Noir</option>
+      <option value="25">Talk-Show</option>
+      <option value="26">Game-Show</option>
+      <option value="27">Reality-TV</option>
+      <option value="28">Adult</option>
+      </select>
       <label class="checkbox-container">
         <input  v-model="newTitle.isAdult" type="checkbox" />
-        ⚠️ Adult Content: IF yes check pls
+        ! Adult Content: IF yes check pls
       </label>
 
       <button type="submit">Add Title </button>

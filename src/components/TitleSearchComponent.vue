@@ -83,7 +83,7 @@ const handleKeyPress = (event) => {
           Genres: {{ item.genres.join(", ") }}
         </p>
         <p v-if="item.isAdult">
-          ⚠️ **Adult Content**
+          ! **Adult Content**
         </p>
       </div>
     </div>
